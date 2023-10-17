@@ -1,0 +1,36 @@
+#Workflow Name
+name: Deploy HTML Files to AppService - CMST388
+
+# When to Run the Workflow
+# This workflow is triggered whenever there's a push to the 'main' branch.
+on:
+  push:
+    branches:
+      - main
+# Job Definitions
+jobs:
+  # This job handles building and deploying the project.
+  build-and-deploy:
+    # Specify the type of runner (machine) to use.
+    # In this case, the latest version of a Windows machine.
+    runs-on: windows-latest
+    
+    # Sequence of tasks to be performed.
+    steps:
+     # Check out the code from the repository.
+    - uses: actions/checkout@main
+    
+    # Deploy the checked-out code to an Azure Web App.
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v1
+      with:
+        # The name of the app on Azure to which we're deploying.
+        app-name: 'cmst388-khackler1'
+
+        # The 'slot' on Azure where the app will be deployed.
+        # Typically, 'production' is the live, user-facing environment.
+        slot-name: 'production'
+
+        # The 'publish-profile' contains credentials and configurations for deploying.
+        # We're fetching this information from the repository's secrets.
+        publish-profile: ${{ secrets.AppServiceCMST388 }}
