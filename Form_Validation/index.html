@@ -9,34 +9,31 @@
 </head>
 
 <body>
+    <h1>Registration</h1>
     <div class="form-container">
-        <h1>Registration</h1>
-        <form action="">
+
+        <form action="" method="post">
             <div role="group" aria-labelledby="personal-info-header">
                 <h2 id="personal-info-header">Personal Information</h2>
                 <div class="formSet">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="fName" required>
+                    <input type="text" id="firstName" name="fname" required>
                 </div>
-
                 <div class="formSet">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lName" required>
+                    <input type="text" id="lastName" name="lname" required>
                 </div>
             </div>
-
             <div role="group" aria-labelledby="shipping-address-header">
                 <h2 id="shipping-address-header">Shipping Address</h2>
                 <div class="formSet">
                     <label for="shippingAddress">Address:</label>
                     <input type="text" id="shippingAddress" name="sAddress" required>
                 </div>
-
                 <div class="formSet">
                     <label for="cityName">City:</label>
                     <input type="text" id="cityName" name="cName" required>
                 </div>
-
                 <div class="formSet">
                     <label for="stateName">State:</label>
                     <select name="sName" id="stateName">
@@ -95,66 +92,76 @@
                 </div>
 
                 <div class="formSet">
-                    <label for="zipCode">Zip Code</label>
-                    <input type="text" id="zipCode" name="zip">
+                    <label for="zipCode">Zip Code:</label>
+                    <input type="text" id="zipCode" name="zip" required>
                 </div>
+
             </div>
 
             <div role="group" aria-labelledby="contact-info-header">
                 <h2 id="contact-info-header">Contact</h2>
+
                 <div class="formSet">
-                    <label for="emailAddress">E-mail Address</label>
-                    <input type="email" id="emailAddress" required>
+                    <label for="emailAddress">E-mail Address:</label>
+                    <input type="email" id="emailAddress" name="email" required>
                 </div>
 
                 <div class="formSet">
-                    <label for="phoneNumber">Phone Number</label>
+                    <label for="phoneNumber">Phone Number:</label>
                     <input type="tel" id="phoneNumber" name="phone" required>
                 </div>
 
+                <div class="formSet" role="group" aria-labelledby="contact-preferences">
+                    <label id="contact-preferences">Contact Method:</label>
 
-                <label for="contact-preferences">Contact Method</label>
-                <div class="formSet">
-                    <input type="checkbox" id="mail" name="contact-type" value="mail">
-                    <label for="mail">Mail</label>
-                </div>
+                    <div class="checkboxGroup">
+                        <input type="checkbox" id="mail" name="contact-type" value="mail">
+                        <label for="mail">Mail</label>
+                    </div>
 
-                <div class="formSet">
-                    <input type="checkbox" id="emailPreference" name="contact-type" value="email">
-                    <label for="emailPreference">E-mail</label>
-                </div>
+                    <div class="checkboxGroup">
+                        <input type="checkbox" id="emailPreference" name="contact-type" value="email">
+                        <label for="emailPreference">E-mail</label>
+                    </div>
 
-                <div class="formSet">
-                    <input type="checkbox" id="phoneCall" name="contact-type" value="phoneCall">
-                    <label for="phoneCall">Call</label>
-                </div>
+                    <div class="checkboxGroup">
+                        <input type="checkbox" id="phoneCall" name="contact-type" value="phoneCall">
+                        <label for="phoneCall">Call</label>
+                    </div>
 
-                <div class="formSet">
-                    <input type="checkbox" id="phoneText" name="contact-type" value="phoneText">
-                    <label for="phoneText">Text</label>
+                    <div class="checkboxGroup">
+                        <input type="checkbox" id="phoneText" name="contact-type" value="phoneText">
+                        <label for="phoneText">Text</label>
+                    </div>
+                    
                 </div>
             </div>
-
-            <div role="group" aria-labelledby="other-header">
+            <div role="group" aria-labelledby="other-info-header">
                 <h2 id="other-info-header">Other</h2>
-
-                <label for="meal-preference">Meal Preference:</label>
                 <div class="formSet">
-                    <input type="radio" id="vegan" name="meal-type">
-                    <label for="vegan">Vegan</label>
+                    <label for="mealPreference">Meal Preference:</label>
+                    <div class="radioGroup">
+                        <input type="radio" id="vegan" name="meal-type" value="vegan">
+                        <label for="vegan">Vegan</label>
+                    </div>
+                    <div class="radioGroup">
+                        <input type="radio" id="vegetarian" name="meal-type" value="vegetarian">
+                        <label for="vegetarian">Vegetarian</label>
+                    </div>
+                    <div class="radioGroup">
+                        <input type="radio" id="nonVegetarian" name="meal-type" value="non-vegetarian">
+                        <label for="nonVegetarian">Non-Vegetarian</label>
+                    </div>
                 </div>
-
                 <div class="formSet">
-                    <input type="radio" id="vegetarian" name="meal-type">
-                    <label for="vegetarian">Vegetarian</label>
-                </div>
-
-                <div class="formSet">
-                    <input type="radio" id="non-vegetarian" name="meal-type">
-                    <label for="non-vegetarian">Non-Vegetarian</label>
+                    <label for="comments">Comments:</label>
+                    <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
                 </div>
             </div>
-
+            <div class="formSet">
+                <button type="submit" class="submitBtn">Submit</button>
+                <button type="reset" class="resetBtn">Reset</button>
+            </div>
         </form>
     </div>
 </body>
