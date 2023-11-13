@@ -111,3 +111,12 @@ label {
 .resetBtn:hover {
     background-color: #E53935;
 }
+
+/* Error Message Styling */
+.error-message {
+    color: #f44336;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    height: 20px;
+    display: block;
+}

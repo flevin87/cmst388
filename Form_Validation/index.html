@@ -10,37 +10,49 @@
 </head>
 
 <body>
-<!--To hold the entire form-->
+    <!--To hold the entire form-->
     <div class="form-container">
         <!-- The name of our form -->
         <h1>Registration</h1>
-        <form action="#" method="post">
+        <form action="#" method="post" id="my-form">
 
             <!-- Defining roles and aria for better accessibility Source: MDN Web Docs-->
             <div role="group" aria-labelledby="personal-info-header">
                 <h2 id="personal-info-header">Personal Information</h2>
+                <!-- First Name Field -->
                 <div class="formSet">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="fname" required>
+                    <input type="text" id="firstName" name="fname">
+                    <span class="error-message" id="firstNameError"></span>
                 </div>
+
+                <!-- Last Name Field -->
                 <div class="formSet">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lname" required>
+                    <input type="text" id="lastName" name="lname">
+                    <span class="error-message" id="lastNameError"></span>
                 </div>
             </div>
             <div role="group" aria-labelledby="shipping-address-header">
                 <h2 id="shipping-address-header">Shipping Address</h2>
+                <!-- Address Field -->
                 <div class="formSet">
                     <label for="shippingAddress">Address:</label>
-                    <input type="text" id="shippingAddress" name="sAddress" required>
+                    <input type="text" id="shippingAddress" name="sAddress">
+                    <span class="error-message" id="addressError"></span>
                 </div>
+                <!-- City Name Field -->
                 <div class="formSet">
                     <label for="cityName">City:</label>
-                    <input type="text" id="cityName" name="cName" required>
+                    <input type="text" id="cityName" name="cName">
+                    <span class="error-message" id="cityError"></span>
                 </div>
+
+                <!-- State Dropdown Menu -->
                 <div class="formSet">
                     <label for="stateName">State:</label>
                     <select name="sName" id="stateName">
+                        <option value="" id="noSelection">Please select a state</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -93,11 +105,14 @@
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                     </select>
+                    <span class="error-message" id="stateError"></span>
                 </div>
 
+                <!-- Zipcode Field -->
                 <div class="formSet">
                     <label for="zipCode">Zip Code:</label>
-                    <input type="text" id="zipCode" name="zip" required>
+                    <input type="text" id="zipCode" name="zip">
+                    <span class="error-message" id="zipError"></span>
                 </div>
 
             </div>
@@ -105,19 +120,30 @@
             <div role="group" aria-labelledby="contact-info-header">
                 <h2 id="contact-info-header">Contact</h2>
 
+                <!-- E-mail Address Field -->
                 <div class="formSet">
                     <label for="emailAddress">E-mail Address:</label>
-                    <input type="email" id="emailAddress" name="email" required>
+                    <input type="email" id="emailAddress" name="email">
+                    <span class="error-message" id="emailError"></span>
                 </div>
 
+                <!-- E-mail Confirmation Field -->
+                <div class="formSet">
+                    <label for="emailConfirm">Confirm E-mail Address:</label>
+                    <input type="email" id="emailConfirm" name="emailConfirm">
+                    <span class="error-message" id="emailConfirmError"></span>
+                </div>
+                <!-- Phone Number Field -->
                 <div class="formSet">
                     <label for="phoneNumber">Phone Number:</label>
-                    <input type="tel" id="phoneNumber" name="phone" required>
+                    <input type="tel" id="phoneNumber" name="phone">
+                    <span class="error-message" id="phoneError"></span>
                 </div>
 
                 <div class="formSet" role="group" aria-labelledby="contact-preferences">
                     <label id="contact-preferences">Contact Method:</label>
 
+                    <!-- Checkbox Fields for Contact Preference -->
                     <div class="checkboxGroup">
                         <input type="checkbox" id="mail" name="contact-type" value="mail">
                         <label for="mail">Mail</label>
@@ -137,11 +163,13 @@
                         <input type="checkbox" id="phoneText" name="contact-type" value="phoneText">
                         <label for="phoneText">Text</label>
                     </div>
-
+                    <span class="error-message" id="checkboxError"></span>
                 </div>
             </div>
             <div role="group" aria-labelledby="other-info-header">
                 <h2 id="other-info-header">Other</h2>
+
+                <!-- Fields for Meal Preference -->
                 <div class="formSet">
                     <label for="mealPreference">Meal Preference:</label>
                     <div class="radioGroup">
@@ -156,12 +184,17 @@
                         <input type="radio" id="nonVegetarian" name="meal-type" value="non-vegetarian">
                         <label for="nonVegetarian">Non-Vegetarian</label>
                     </div>
+                    <span class="error-message" id="radioError"></span>
                 </div>
+
+                <!-- Additional Comments -->
                 <div class="formSet">
                     <label for="comments">Comments:</label>
                     <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
                 </div>
             </div>
+
+            <!-- Button Field-->
             <div class="button-container">
                 <button type="submit" class="submitBtn">Submit</button>
                 <button type="reset" class="resetBtn">Reset</button>
