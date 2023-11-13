@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Form Validation</title>
+    <!-- Link to CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <h1>Registration</h1>
+<!--To hold the entire form-->
     <div class="form-container">
+        <!-- The name of our form -->
+        <h1>Registration</h1>
+        <form action="#" method="post">
 
-        <form action="" method="post">
+            <!-- Defining roles and aria for better accessibility Source: MDN Web Docs-->
             <div role="group" aria-labelledby="personal-info-header">
                 <h2 id="personal-info-header">Personal Information</h2>
                 <div class="formSet">
@@ -133,7 +137,7 @@
                         <input type="checkbox" id="phoneText" name="contact-type" value="phoneText">
                         <label for="phoneText">Text</label>
                     </div>
-                    
+
                 </div>
             </div>
             <div role="group" aria-labelledby="other-info-header">
@@ -158,12 +162,15 @@
                     <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
                 </div>
             </div>
-            <div class="formSet">
+            <div class="button-container">
                 <button type="submit" class="submitBtn">Submit</button>
                 <button type="reset" class="resetBtn">Reset</button>
             </div>
         </form>
     </div>
+
+    <!-- Link to Javascript -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>
