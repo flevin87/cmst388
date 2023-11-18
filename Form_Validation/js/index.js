@@ -3,6 +3,30 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', validateForm);
 })
 
+// Creating a global email object for later access
+var emailValidator = {
+
+    regex: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+
+    isValidFormat: function (email) {
+        return this.regex.test(email.trim());
+    },
+
+    isValidLength: function (email) {
+        var emailParts = email.trim().split('@');
+        var namePart = emailParts[0];
+        var domainPart = emailParts[1];
+        if (namePart.length <= 64 && domainPart.length <= 252) {
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    emailValidate: function (email) {
+        return this.isValidFormat(email) && this.isValidLength(email);
+    }
+}
 function validateForm(event) {
     event.preventDefault();
     // Declaring all variables related to first name 
@@ -34,10 +58,9 @@ function validateForm(event) {
     var zipError = document.getElementById('zipError');
     let zipRegex = /^\d{5}$/;
 
-    //Email variables
-    var emailAddress = document.getElementById('emailAddress');
+    // Email Variables
+    var email = document.getElementById('emailAddress');
     var emailError = document.getElementById('emailError');
-    var emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
     // First check to see if the field is empty
     if (firstName.value.trim() === '') {
@@ -93,5 +116,12 @@ function validateForm(event) {
         zipError.textContent = 'Zipcode must be 5 digits only. ';
     } else {
         zipError.textContent = '';
+    }
+
+    // Conditionals for Email Validation
+    if (!emailValidator.validate(email.value)) {
+        emailError.textContent = 'Invalid E-mail format or length. ';
+    } else {
+        emailError.textContent = '';
     }
 }
