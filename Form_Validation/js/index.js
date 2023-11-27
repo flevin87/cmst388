@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     var form = document.getElementById('my-form');
     form.addEventListener('submit', validateForm);
+    form.addEventListener('reset', resetForm);
 })
 
 // Creating a global email object for later access
@@ -61,6 +62,25 @@ function validateForm(event) {
     // Email Variables
     var email = document.getElementById('emailAddress');
     var emailError = document.getElementById('emailError');
+    console.log("email: ", email.value);
+    var emailConfirmation = document.getElementById('emailConfirm');
+    console.log("email confirmation: ", emailConfirmation.value);
+    var emailConfirmError = document.getElementById('emailConfirmError');
+
+    // Phone Number Variables
+    var phoneNumber = document.getElementById('phoneNumber');
+    var phoneError = document.getElementById('phoneError');
+    let phoneRegex = /^\d{3}-?\d{3}-?\d{4}$/;
+
+    // Contact Checkbox Variables
+    var contactMethods = document.getElementsByName('contact-type');
+    var selectedMethods = 0;
+    var contactError = document.getElementById('checkboxError');
+
+    // Meal Preference Radio Variables
+    var mealSelected = Array.from(document.getElementsByName('meal-type')).some(option => option.checked);
+    var mealOptions = document.getElementsByName('meal-type');
+    var mealError = document.getElementById('radioError');
 
     // First check to see if the field is empty
     if (firstName.value.trim() === '') {
@@ -119,9 +139,71 @@ function validateForm(event) {
     }
 
     // Conditionals for Email Validation
-    if (!emailValidator.validate(email.value)) {
+    if (email.value === '') {
+        emailError.textContent = 'Email is required. ';
+    } else if (!emailValidator.emailValidate(email.value)) {
         emailError.textContent = 'Invalid E-mail format or length. ';
     } else {
         emailError.textContent = '';
     }
+
+    // Checking to see if Email Confirmation field is Equal to Email Field
+    if (email.value.trim() !== emailConfirmation.value.trim()) {
+        emailConfirmError.textContent = 'Email addresses do not match. ';
+    } else {
+        emailConfirmError.textContent = '';
+    }
+
+    // Conditionals for Phone Number Input
+    if (phoneNumber.value === '') {
+        phoneError.textContent = 'Phone number is required. ';
+    } else if (!phoneRegex.test(phoneNumber.value.trim())) {
+        phoneError.textContent = 'Invalid phone number format. Use 123-456-7890 or 1234567890. ';
+    } else {
+        phoneError.textContent = '';
+    }
+
+    // Check to see if at least two contact methods are selected 
+
+    for (var i = 0; i < contactMethods.length; i++) {
+        if (contactMethods[i].checked) {
+            selectedMethods++;
+        }
+    }
+    if (selectedMethods < 2) {
+        contactError.textContent = 'Please select at least two contact methods. ';
+    } else {
+        contactError.textContent = '';
+    }
+
+    // Check to make sure that a meal preference is selected
+
+    if (!mealSelected) {
+        mealError.textContent = 'Please select a meal preference. ';
+    } else {
+        mealError.textContent = '';
+    }
+
+    // Finally time to check for errors!
+    var errorMessages = document.querySelectorAll('.error-message');
+    var isErrorPresent = Array.from(errorMessages).some(function (message) {
+        return message.textContent.trim() !== '';
+    });
+    if (!isErrorPresent) {
+        handleFormSubmission();
+    } else {
+        console.log("Cannot submit form. Please fix existing errors.");
+    }
+}
+
+function handleFormSubmission() {
+    console.log("Form is being submitted!");
+}
+function resetForm() {
+    console.log('Form is being reset');
+    //Clear all custom error messages
+    var errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(function (message) {
+        message.textContent = '';
+    });
 }
