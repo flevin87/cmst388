@@ -1,6 +1,6 @@
 /*
 		Your Name: Kevin Hackler
-		Last Modified Date: 12/06/2023
+		Last Modified Date: 12/10/2023
 		File: event_registration.js
 		File Description: <Enter a brief paragraph to describe the purpose of this file>
 */
