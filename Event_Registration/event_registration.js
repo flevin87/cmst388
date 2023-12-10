@@ -1,8 +1,8 @@
 /*
 		Your Name: Kevin Hackler
-		Last Modified Date: 12/06/2023
+		Last Modified Date: 12/10/2023
 		File: event_registration.js
-		File Description: <Enter a brief paragraph to describe the purpose of this file>
+		File Description: Javascript Functionality for Purchasing Tickets 
 */
 
 // Set the minimum and maximum number of tickets able to be purchased
