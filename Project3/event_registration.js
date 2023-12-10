@@ -118,5 +118,3 @@ function setError(elementId, isError) {
 		}
 	}
 }
-
-
