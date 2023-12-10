@@ -51,7 +51,7 @@ function calculateTotal() {
 		let totalCost = (numTickets * costPerTicket) + (numTickets * ticketSurcharge);
 
 		// Update the total cost field with the calculated cost.
-		document.getElementById('totalCost').value = '$' + totalCost;
+		document.getElementById('totalCost').value = '$' + totalCost.toFixed(2);
 
 		// Display the form fields for name and email by targeting the contactInformation div id
 		document.getElementById('contactInformation').style.display = 'block';
